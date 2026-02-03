@@ -3,40 +3,42 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Noah Mark Myers — Accounting professor, researcher, speaker (AI, analytics, auditing, information systems)." />
-  <title>Noah Myers | Personal Website</title>
+  <meta name="description" content="Noah Myers — Accounting professor | AIS, auditing, AI & analytics." />
+  <title>Noah Myers | Faculty Landing Page</title>
 
   <style>
+    /* Muted UVU-inspired palette (green + slate). */
     :root{
-      --bg: #0b0f19;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.10);
-      --border: rgba(255,255,255,.14);
+      --bg: #0b0f14;
+      --surface: rgba(255,255,255,.04);
+      --surface2: rgba(255,255,255,.06);
+      --border: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.90);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.55);
-      --brand: #7dd3fc;   /* sky */
-      --accent: #a78bfa;  /* violet */
-      --good: #34d399;    /* green */
-      --warn: #fbbf24;    /* amber */
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius: 18px;
-      --max: 1100px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --muted: rgba(255,255,255,.66);
+      --muted2: rgba(255,255,255,.52);
+
+      --uvu-green: #2a6a4f; /* muted green */
+      --uvu-green-2: #1f5a42;
+      --slate: #94a3b8;
+
+      --radius: 16px;
+      --shadow: 0 22px 60px rgba(0,0,0,.40);
+      --max: 1080px;
+
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
 
-    /* Light mode (auto) */
     @media (prefers-color-scheme: light){
       :root{
-        --bg: #f7fafc;
-        --panel: rgba(15,23,42,.05);
-        --panel2: rgba(15,23,42,.08);
-        --border: rgba(15,23,42,.12);
+        --bg: #f6f7f9;
+        --surface: rgba(15,23,42,.04);
+        --surface2: rgba(15,23,42,.06);
+        --border: rgba(15,23,42,.10);
         --text: rgba(15,23,42,.92);
         --muted: rgba(15,23,42,.70);
-        --muted2: rgba(15,23,42,.58);
-        --shadow: 0 18px 50px rgba(2,6,23,.12);
+        --muted2: rgba(15,23,42,.56);
+        --shadow: 0 18px 45px rgba(2,6,23,.12);
       }
     }
 
@@ -47,165 +49,160 @@
       font-family: var(--sans);
       color: var(--text);
       background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(125,211,252,.18), transparent 55%),
-        radial-gradient(900px 500px at 85% 20%, rgba(167,139,250,.16), transparent 50%),
-        radial-gradient(700px 500px at 60% 95%, rgba(52,211,153,.10), transparent 50%),
+        radial-gradient(900px 520px at 20% 10%, rgba(42,106,79,.22), transparent 60%),
+        radial-gradient(900px 520px at 85% 15%, rgba(148,163,184,.16), transparent 55%),
+        radial-gradient(900px 520px at 60% 95%, rgba(42,106,79,.10), transparent 55%),
         var(--bg);
       line-height: 1.5;
+      letter-spacing: 0.1px;
     }
-
     a{color:inherit; text-decoration:none}
     a:hover{opacity:.92}
-    .wrap{max-width: var(--max); margin:0 auto; padding: 26px 18px 60px}
+
+    .wrap{max-width: var(--max); margin:0 auto; padding: 26px 18px 56px}
     .topbar{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding: 10px 0 22px;
+      gap:16px; padding: 6px 0 18px;
     }
-    .brand{
+
+    .id{
       display:flex; align-items:center; gap:12px;
-      font-weight:700; letter-spacing:.2px;
+      min-width: 220px;
     }
-    .dot{
-      width:12px; height:12px; border-radius:999px;
-      background: linear-gradient(135deg, var(--brand), var(--accent));
-      box-shadow: 0 0 0 6px rgba(125,211,252,.10);
+    .mark{
+      width:11px; height:11px; border-radius:999px;
+      background: linear-gradient(135deg, var(--uvu-green), var(--slate));
+      box-shadow: 0 0 0 7px rgba(42,106,79,.12);
     }
+    .name{font-weight:720; letter-spacing:-.2px}
+    .role{font-size:12px; color:var(--muted); font-weight:600; margin-top:2px}
+
     .nav{
-      display:flex; gap:14px; flex-wrap:wrap;
-      font-size:14px; color: var(--muted);
+      display:flex; gap:10px; flex-wrap:wrap;
+      font-size: 13px; color: var(--muted);
+      justify-content:flex-end;
     }
     .nav a{
-      padding: 8px 10px;
-      border-radius: 999px;
+      padding: 7px 10px;
       border: 1px solid transparent;
+      border-radius: 999px;
     }
     .nav a:hover{
       border-color: var(--border);
-      background: var(--panel);
+      background: var(--surface);
     }
 
+    /* Minimal cards */
+    .card{
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--surface2), rgba(255,255,255,0));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    /* HERO */
     .hero{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
       align-items:stretch;
     }
     @media (max-width: 900px){
       .hero{grid-template-columns: 1fr}
     }
-
-    .card{
+    .hero-left{padding: 24px 22px}
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size: 12px; color: var(--muted);
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-left{padding: 26px 24px}
-    .kicker{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size: 13px;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      padding: 7px 12px;
+      background: rgba(255,255,255,.03);
+      padding: 7px 11px;
       border-radius: 999px;
     }
-    .kicker b{
-      color: var(--text);
-      font-weight:600;
+    .badge .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--uvu-green);
+      box-shadow: 0 0 0 5px rgba(42,106,79,.10);
     }
     h1{
-      margin: 14px 0 10px;
-      font-size: clamp(30px, 4vw, 44px);
+      margin: 12px 0 10px;
+      font-size: clamp(28px, 3.8vw, 40px);
       line-height: 1.12;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
     }
     .sub{
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--muted);
-      font-size: 16px;
-      max-width: 62ch;
+      font-size: 15px;
+      max-width: 70ch;
     }
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px}
-    .chip{
-      font-size: 13px;
+
+    .meta-row{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top: 12px;
+    }
+    .tag{
+      font-size: 12px;
       color: var(--muted);
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
-      padding: 8px 11px;
+      padding: 6px 10px;
       border-radius: 999px;
     }
 
     .cta{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
     }
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      font-weight: 600;
-      font-size: 14px;
+      background: rgba(255,255,255,.04);
+      font-weight: 650;
+      font-size: 13px;
       cursor:pointer;
-      transition: transform .08s ease, background .08s ease;
+      transition: transform .08s ease, background .10s ease;
       user-select:none;
     }
-    .btn:hover{background: rgba(255,255,255,.08)}
+    .btn:hover{background: rgba(255,255,255,.07)}
     .btn:active{transform: translateY(1px)}
     .btn.primary{
-      border-color: rgba(125,211,252,.45);
-      background: linear-gradient(135deg, rgba(125,211,252,.22), rgba(167,139,250,.16));
+      border-color: rgba(42,106,79,.55);
+      background: linear-gradient(135deg, rgba(42,106,79,.22), rgba(148,163,184,.10));
     }
 
-    .hero-right{
-      display:grid;
-      grid-template-rows: auto 1fr;
-    }
-    .photo-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+    /* Photos */
+    .photos{
       padding: 10px;
-      height: 100%;
-    }
-    @media (max-width: 900px){
-      .photo-grid{grid-template-columns: 1fr 1fr}
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
     }
     .photo{
-      position:relative;
       border-radius: 14px;
       overflow:hidden;
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       min-height: 180px;
+      position:relative;
     }
     .photo img{
       width:100%; height:100%;
       object-fit: cover;
       display:block;
-      filter: saturate(1.02) contrast(1.02);
+      filter: saturate(1.0) contrast(1.02);
     }
-    .photo .label{
-      position:absolute; left:10px; bottom:10px;
-      font-size: 12px;
-      color: rgba(255,255,255,.88);
-      background: rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      backdrop-filter: blur(10px);
-    }
-    @media (prefers-color-scheme: light){
-      .photo .label{
-        color: rgba(15,23,42,.92);
-        background: rgba(255,255,255,.72);
-        border-color: rgba(15,23,42,.12);
-      }
+    .photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.28));
+      pointer-events:none;
     }
 
-    section{margin-top: 18px}
+    /* Sections */
+    section{margin-top: 14px}
     .grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -215,65 +212,50 @@
       .grid{grid-template-columns: 1fr}
     }
 
-    .card-head{
+    .head{
+      padding: 16px 18px 0;
       display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-      padding: 18px 18px 0;
     }
-    .card-title{
+    .title{
       margin:0;
-      font-size: 16px;
+      font-size: 15px;
       letter-spacing: -0.2px;
+      font-weight: 720;
     }
-    .card-sub{
-      margin: 2px 0 0;
-      font-size: 13px;
+    .subtitle{
+      margin: 3px 0 0;
+      font-size: 12px;
       color: var(--muted);
+      font-weight: 600;
     }
-    .card-body{padding: 14px 18px 18px}
+    .body{padding: 12px 18px 18px}
 
     .list{display:flex; flex-direction:column; gap:10px}
     .item{
       border: 1px solid var(--border);
       background: rgba(255,255,255,.03);
       border-radius: 14px;
-      padding: 12px 12px;
+      padding: 12px;
     }
-    .item .top{
-      display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
+    .item-top{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
     }
-    .item .name{font-weight:700}
-    .item .meta{color: var(--muted2); font-size: 13px}
-    .item .desc{color: var(--muted); font-size: 14px; margin-top: 6px}
-    .pillrow{display:flex; gap:8px; flex-wrap:wrap; margin-top: 10px}
-    .pill{
-      font-size: 12px;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      padding: 5px 9px;
-      border-radius: 999px;
-      font-family: var(--mono);
+    .item-name{font-weight:720}
+    .item-meta{font-size:12px; color: var(--muted2); font-family: var(--mono)}
+    .item-desc{margin-top:6px; color: var(--muted); font-size: 14px}
+
+    .divider{
+      height:1px; background: var(--border); margin: 12px 0;
     }
 
-    .two-col{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 700px){
-      .two-col{grid-template-columns: 1fr}
-    }
-
-    .footer{
-      margin-top: 18px;
+    .foot{
+      margin-top: 16px;
       display:flex; flex-wrap:wrap; gap:10px;
       color: var(--muted);
-      font-size: 13px;
-      align-items:center; justify-content:space-between;
-      padding: 14px 4px 0;
+      font-size: 12px;
+      justify-content:space-between;
+      padding: 8px 4px 0;
     }
-    .tiny{opacity:.95}
-    .sep{opacity:.35}
     .mono{font-family: var(--mono)}
   </style>
 </head>
@@ -281,22 +263,19 @@
 <body>
   <div class="wrap" id="top">
     <header class="topbar">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
+      <div class="id">
+        <span class="mark" aria-hidden="true"></span>
         <div>
-          <div>Noah Myers</div>
-          <div style="font-size:12px;color:var(--muted);font-weight:600;margin-top:2px;">
-            PhD, CPA • Accounting • AI & Analytics
-          </div>
+          <div class="name">Noah Myers</div>
+          <div class="role">Assistant Professor of Accounting • AI & Data Analytics • AIS & Auditing</div>
         </div>
       </div>
 
       <nav class="nav" aria-label="Site">
         <a href="#about">About</a>
-        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
         <a href="#teaching">Teaching</a>
         <a href="#talks">Speaking</a>
-        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -304,120 +283,119 @@
     <!-- HERO -->
     <div class="hero">
       <div class="card hero-left">
-        <span class="kicker"><b>Utah Valley University</b> • Woodbury School of Business</span>
-        <h1>Accounting professor focused on AI, data analytics, and information credibility.</h1>
+        <div class="badge"><span class="dot" aria-hidden="true"></span>Utah Valley University • Woodbury School of Business</div>
+        <h1>Research and teaching at the intersection of auditing, information systems, and applied analytics.</h1>
         <p class="sub">
-          I teach and build hands-on learning experiences at the intersection of accounting information systems,
-          auditing, and emerging technologies—helping students and professionals apply modern tools with good judgment.
+          My work examines how oversight, reporting choices, and technology shape information quality and decision-making.
+          In the classroom, I focus on practical, transparent workflows—especially where AI and analytics meet accounting practice.
         </p>
 
         <div class="cta">
-          <a class="btn primary" href="#contact" title="Jump to contact">Contact</a>
-          <a class="btn" href="https://www.noahmyers.com" target="_blank" rel="noopener">Website</a>
+          <a class="btn primary" href="#contact">Contact</a>
           <a class="btn" href="mailto:noah.myers@uvu.edu">Email</a>
+          <a class="btn" href="https://www.noahmyers.com" target="_blank" rel="noopener">Website</a>
         </div>
 
-        <div class="chips" aria-label="Highlights">
-          <span class="chip">Assistant Professor (2021–present)</span>
-          <span class="chip">Research: PCAOB oversight, audit info acquisition</span>
-          <span class="chip">Courses: ACC 4510, ACC 3510, MGMT 2400</span>
+        <div class="meta-row" aria-label="Highlights">
+          <span class="tag">CPA (Utah)</span>
+          <span class="tag">Audit oversight & enforcement</span>
+          <span class="tag">Information credibility</span>
+          <span class="tag">AI & analytics pedagogy</span>
         </div>
       </div>
 
-      <div class="card hero-right" aria-label="Photos">
-        <div class="photo-grid">
-          <figure class="photo">
-            <img src="istockphoto-1082467846-612x612.jpg" alt="Photo 1" />
-            <figcaption class="label">Family / personal</figcaption>
-          </figure>
-          <figure class="photo">
-            <img src="small-asian-family-portrait-at-home-photo.jpg" alt="Photo 2" />
-            <figcaption class="label">Family / personal</figcaption>
-          </figure>
+      <div class="card" aria-label="Photos">
+        <div class="photos">
+          <div class="photo">
+            <img src="istockphoto-1082467846-612x612.jpg" alt="Photo" />
+          </div>
+          <div class="photo">
+            <img src="small-asian-family-portrait-at-home-photo.jpg" alt="Photo" />
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- MAIN GRID -->
+    <!-- ABOUT + EDUCATION -->
     <section class="grid">
-      <!-- ABOUT -->
       <article class="card" id="about">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">About</h2>
-            <p class="card-sub">What I do and what I’m interested in</p>
+            <h2 class="title">About</h2>
+            <p class="subtitle">Academic focus and background</p>
           </div>
         </div>
-        <div class="card-body">
-          <p style="margin:0;color:var(--muted);">
-            I’m an Assistant Professor of Accounting at Utah Valley University. My work spans accounting information systems,
-            auditing, and decision-making—especially how technology shapes what people trust, how they learn, and how they decide.
+        <div class="body">
+          <p style="margin:0;color:var(--muted);font-size:14px;max-width:75ch;">
+            I’m an Assistant Professor of Accounting at Utah Valley University. My research spans auditing and
+            accounting information systems, with a focus on information acquisition, credibility, and the effects
+            of oversight and enforcement on firm behavior.
           </p>
 
-          <div class="two-col" style="margin-top:14px;">
+          <div class="divider"></div>
+
+          <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">Academic</div>
-                <div class="meta">Research + teaching</div>
+              <div class="item-top">
+                <div class="item-name">Education</div>
+                <div class="item-meta">PhD • MAcc • BS</div>
               </div>
-              <div class="desc">
-                Published in outlets including <span class="mono">Contemporary Accounting Research</span>,
-                <span class="mono">AUDITING: A Journal of Practice & Theory</span>, and others.
+              <div class="item-desc">
+                Ph.D., Business Administration (Accounting), Arizona State University •
+                Master of Accountancy, Brigham Young University •
+                B.S., Accounting, Brigham Young University
               </div>
             </div>
 
             <div class="item">
-              <div class="top">
-                <div class="name">Professional</div>
-                <div class="meta">Advisory background</div>
+              <div class="item-top">
+                <div class="item-name">Professional background</div>
+                <div class="item-meta">advisory</div>
               </div>
-              <div class="desc">
-                Formerly in advisory/consulting roles at Ernst & Young and Squire & Company.
+              <div class="item-desc">
+                Prior experience in advisory/consulting roles at Ernst & Young and Squire & Company.
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- QUICK FACTS -->
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">At a glance</h2>
-            <p class="card-sub">A few quick details</p>
+            <h2 class="title">Research areas</h2>
+            <p class="subtitle">Themes across projects</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">Education</div>
-                <div class="meta">PhD • MAcc • BS</div>
+              <div class="item-top">
+                <div class="item-name">Audit oversight and enforcement</div>
+                <div class="item-meta">PCAOB</div>
               </div>
-              <div class="desc">
-                Ph.D. in Business Administration (Accounting), Arizona State University •
-                Master of Accountancy, Brigham Young University •
-                B.S. Accounting, Brigham Young University.
+              <div class="item-desc">
+                How enforcement design and oversight affect auditors, firms, and real outcomes.
               </div>
             </div>
 
             <div class="item">
-              <div class="top">
-                <div class="name">Certification</div>
-                <div class="meta">CPA (Utah)</div>
+              <div class="item-top">
+                <div class="item-name">Information acquisition and credibility</div>
+                <div class="item-meta">decision-making</div>
               </div>
-              <div class="desc">
-                Certified Public Accountant (Active).
+              <div class="item-desc">
+                When people seek information, what they trust, and how systems and “shadow IT” alter perceived credibility.
               </div>
             </div>
 
             <div class="item">
-              <div class="top">
-                <div class="name">Service</div>
-                <div class="meta">Leadership + review</div>
+              <div class="item-top">
+                <div class="item-name">Applied analytics and AI in accounting</div>
+                <div class="item-meta">teaching</div>
               </div>
-              <div class="desc">
-                Curriculum committee leadership; co-advisor to student orgs; editorial board and ad hoc reviewing.
+              <div class="item-desc">
+                Practical workflows that remain explainable, auditable, and aligned with controls.
               </div>
             </div>
           </div>
@@ -425,154 +403,137 @@
       </article>
     </section>
 
-    <!-- RESEARCH -->
-    <section class="grid" id="research">
+    <!-- PUBLICATIONS -->
+    <section class="grid" id="publications">
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">Selected publications</h2>
-            <p class="card-sub">Peer-reviewed work (highlights)</p>
+            <h2 class="title">Selected publications</h2>
+            <p class="subtitle">Peer-reviewed (highlights)</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">Is the PCAOB Enforcement Approach Aligned with Its Mandate?</div>
-                <div class="meta">Contemporary Accounting Research (2025)</div>
+              <div class="item-top">
+                <div class="item-name">Is the PCAOB Enforcement Approach Aligned with Its Mandate?</div>
+                <div class="item-meta">Contemporary Accounting Research • 2025</div>
               </div>
-              <div class="desc">
-                Evidence from sanctioned auditors and former enforcement staff on the PCAOB’s enforcement approach.
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="top">
-                <div class="name">Do Auditor Change Announcements Trigger Information Acquisition?</div>
-                <div class="meta">Journal of Information Systems (2025)</div>
-              </div>
-              <div class="desc">
-                Examines how auditor changes relate to information acquisition behaviors around announcements.
+              <div class="item-desc">
+                Evidence from sanctioned auditors and former enforcement staff on PCAOB enforcement approach.
               </div>
             </div>
 
             <div class="item">
-              <div class="top">
-                <div class="name">Costs of Public Auditor Oversight: Real Earnings Management and Innovation Loss</div>
-                <div class="meta">AUDITING: A Journal of Practice & Theory (2024)</div>
+              <div class="item-top">
+                <div class="item-name">Do Auditor Change Announcements Trigger Information Acquisition?</div>
+                <div class="item-meta">Journal of Information Systems • 2025</div>
               </div>
-              <div class="desc">
-                Studies potential real effects of auditor oversight on firm behavior and innovation.
+              <div class="item-desc">
+                Examines information acquisition patterns surrounding auditor change announcements.
               </div>
             </div>
 
             <div class="item">
-              <div class="top">
-                <div class="name">The Impact of Shadow IT Systems on Perceived Information Credibility</div>
-                <div class="meta">Accounting Horizons (2017)</div>
+              <div class="item-top">
+                <div class="item-name">Costs of Public Auditor Oversight: Real Earnings Management and Innovation Loss</div>
+                <div class="item-meta">AUDITING: A Journal of Practice & Theory • 2024</div>
               </div>
-              <div class="desc">
+              <div class="item-desc">
+                Studies potential real effects of public oversight on firm decisions and innovation outcomes.
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-top">
+                <div class="item-name">The Impact of Shadow IT Systems on Perceived Information Credibility</div>
+                <div class="item-meta">Accounting Horizons • 2017</div>
+              </div>
+              <div class="item-desc">
                 Links shadow systems to perceived credibility and managerial decisions.
               </div>
             </div>
           </div>
-
-          <div class="pillrow" aria-label="Topics">
-            <span class="pill">audit oversight</span>
-            <span class="pill">information acquisition</span>
-            <span class="pill">information credibility</span>
-            <span class="pill">technology & decision-making</span>
-          </div>
         </div>
       </article>
 
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">Working papers</h2>
-            <p class="card-sub">In progress / under review</p>
+            <h2 class="title">Working papers</h2>
+            <p class="subtitle">In progress / under review</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">Student Perception of New CPA Pathways and the Impact on Graduate Program Demand</div>
-                <div class="meta">Working paper</div>
+              <div class="item-top">
+                <div class="item-name">Student Perception of New CPA Pathways and the Impact on Graduate Program Demand</div>
+                <div class="item-meta">working paper</div>
               </div>
-              <div class="desc">Explores how evolving CPA pathways may influence graduate program demand and perceptions.</div>
+              <div class="item-desc">
+                Investigates evolving CPA pathways and potential implications for graduate accounting education.
+              </div>
             </div>
             <div class="item">
-              <div class="top">
-                <div class="name">FTX Unchecked: The Internal Control Failures Behind the Crypto Giant’s Fall</div>
-                <div class="meta">Revising for resubmission</div>
+              <div class="item-top">
+                <div class="item-name">FTX Unchecked: The Internal Control Failures Behind the Crypto Giant’s Fall</div>
+                <div class="item-meta">teaching case</div>
               </div>
-              <div class="desc">A teaching-focused examination of internal control breakdowns and governance lessons.</div>
+              <div class="item-desc">
+                A teaching-focused case on control failure, governance, and audit-relevant lessons.
+              </div>
             </div>
             <div class="item">
-              <div class="top">
-                <div class="name">Auditor Changes and Information Risk</div>
-                <div class="meta">Dissertation stream</div>
+              <div class="item-top">
+                <div class="item-name">Auditor Changes and Information Risk</div>
+                <div class="item-meta">dissertation stream</div>
               </div>
-              <div class="desc">Examines information risk and market behavior around auditor change events.</div>
+              <div class="item-desc">
+                Research on information risk and behavior around auditor change events.
+              </div>
             </div>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- TEACHING -->
+    <!-- TEACHING + SERVICE -->
     <section class="grid" id="teaching">
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">Teaching</h2>
-            <p class="card-sub">Courses and classroom focus</p>
+            <h2 class="title">Teaching</h2>
+            <p class="subtitle">Courses and classroom focus</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">ACC 4510 — Artificial Intelligence & Data Analytics in Accounting</div>
-                <div class="meta">UVU</div>
+              <div class="item-top">
+                <div class="item-name">ACC 4510 — Artificial Intelligence & Data Analytics in Accounting</div>
+                <div class="item-meta">UVU</div>
               </div>
-              <div class="desc">
-                Built from scratch with modern AI tools and analytics techniques; designed to be practical and career-relevant.
-              </div>
-              <div class="pillrow">
-                <span class="pill">AI tools</span>
-                <span class="pill">analytics workflows</span>
-                <span class="pill">applied projects</span>
+              <div class="item-desc">
+                Practical applications of AI and analytics for accounting workflows, emphasizing transparency and controls.
               </div>
             </div>
-
             <div class="item">
-              <div class="top">
-                <div class="name">ACC 3510 — Accounting Information Systems</div>
-                <div class="meta">UVU</div>
+              <div class="item-top">
+                <div class="item-name">ACC 3510 — Accounting Information Systems</div>
+                <div class="item-meta">UVU</div>
               </div>
-              <div class="desc">
-                Systems thinking, controls, data, and how information moves through an organization.
-              </div>
-              <div class="pillrow">
-                <span class="pill">internal controls</span>
-                <span class="pill">process & data</span>
-                <span class="pill">systems literacy</span>
+              <div class="item-desc">
+                Systems, processes, and internal control fundamentals—how information flows and where it breaks.
               </div>
             </div>
-
             <div class="item">
-              <div class="top">
-                <div class="name">MGMT 2400 — Data Analytics for Business</div>
-                <div class="meta">UVU</div>
+              <div class="item-top">
+                <div class="item-name">MGMT 2400 — Data Analytics for Business</div>
+                <div class="item-meta">UVU</div>
               </div>
-              <div class="desc">
-                Practical analytics concepts and tools for business students.
-              </div>
-              <div class="pillrow">
-                <span class="pill">business analytics</span>
-                <span class="pill">decision support</span>
+              <div class="item-desc">
+                Analytics concepts and tools for business decision-making in a practical, approachable way.
               </div>
             </div>
           </div>
@@ -580,40 +541,39 @@
       </article>
 
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">What students usually get</h2>
-            <p class="card-sub">A teaching philosophy (in one card)</p>
+            <h2 class="title">Service & reviewing</h2>
+            <p class="subtitle">Selected items</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">Hands-on + good judgment</div>
-                <div class="meta">Tools are necessary, not sufficient</div>
+              <div class="item-top">
+                <div class="item-name">University and department service</div>
+                <div class="item-meta">leadership</div>
               </div>
-              <div class="desc">
-                We practice with real tools (SQL, Python, automation, analytics platforms),
-                but always tie it back to controls, credibility, and decision-making.
-              </div>
-            </div>
-            <div class="item">
-              <div class="top">
-                <div class="name">Modern workflows</div>
-                <div class="meta">Efficient, explainable, repeatable</div>
-              </div>
-              <div class="desc">
-                Emphasis on building workflows you can defend, document, and improve—especially when AI is involved.
+              <div class="item-desc">
+                Curriculum committee participation and academic program leadership activities.
               </div>
             </div>
             <div class="item">
-              <div class="top">
-                <div class="name">Career-ready communication</div>
-                <div class="meta">Explain the “why”</div>
+              <div class="item-top">
+                <div class="item-name">Editorial / peer review</div>
+                <div class="item-meta">scholarly</div>
               </div>
-              <div class="desc">
-                Students practice translating analysis into clear insights for technical and non-technical audiences.
+              <div class="item-desc">
+                Editorial board membership and ad hoc reviewing for academic journals.
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-top">
+                <div class="item-name">Student engagement</div>
+                <div class="item-meta">mentoring</div>
+              </div>
+              <div class="item-desc">
+                Supporting student organizations and professional development activities.
               </div>
             </div>
           </div>
@@ -621,88 +581,71 @@
       </article>
     </section>
 
-    <!-- SPEAKING -->
+    <!-- SPEAKING + SKILLS -->
     <section class="grid" id="talks">
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">Speaking</h2>
-            <p class="card-sub">Selected professional & industry presentations</p>
+            <h2 class="title">Speaking</h2>
+            <p class="subtitle">Selected engagements</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">ACFE Global Conference — Invited Speaker</div>
-                <div class="meta">June 2025 • Nashville, TN</div>
+              <div class="item-top">
+                <div class="item-name">ACFE Global Conference — Invited Speaker</div>
+                <div class="item-meta">June 2025 • Nashville, TN</div>
               </div>
-              <div class="desc">Fraud / controls / real-world cases for professionals.</div>
+              <div class="item-desc">Fraud, controls, and applied lessons for professional audiences.</div>
             </div>
             <div class="item">
-              <div class="top">
-                <div class="name">Auburn Accounting & Auditing Summit — Speaker</div>
-                <div class="meta">Sept 2025 • Auburn, AL</div>
+              <div class="item-top">
+                <div class="item-name">Auburn Accounting & Auditing Summit — Speaker</div>
+                <div class="item-meta">Sept 2025 • Auburn, AL</div>
               </div>
-              <div class="desc">Research and practice implications for audit and oversight.</div>
+              <div class="item-desc">Research insights and implications for audit and oversight.</div>
             </div>
             <div class="item">
-              <div class="top">
-                <div class="name">National Society of Accountants for Cooperatives — Speaker</div>
-                <div class="meta">May 2026 • Nashville, TN</div>
+              <div class="item-top">
+                <div class="item-name">National Society of Accountants for Cooperatives — Speaker</div>
+                <div class="item-meta">May 2026 • Nashville, TN</div>
               </div>
-              <div class="desc">Applied topics for practitioners and industry audiences.</div>
+              <div class="item-desc">Applied topics for practitioners and industry groups.</div>
             </div>
           </div>
         </div>
       </article>
 
-      <article class="card" id="skills">
-        <div class="card-head">
+      <article class="card">
+        <div class="head">
           <div>
-            <h2 class="card-title">Skills</h2>
-            <p class="card-sub">Tools and platforms I use</p>
+            <h2 class="title">Skills</h2>
+            <p class="subtitle">Tools & platforms</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <div class="name">Data & analytics</div>
-                <div class="meta">Build, clean, analyze</div>
+              <div class="item-top">
+                <div class="item-name">Data & methods</div>
+                <div class="item-meta">analysis</div>
               </div>
-              <div class="desc">Python, SQL, SAS, Stata</div>
-              <div class="pillrow">
-                <span class="pill">python</span>
-                <span class="pill">sql</span>
-                <span class="pill">stata</span>
-                <span class="pill">sas</span>
-              </div>
+              <div class="item-desc">Python, SQL, SAS, Stata</div>
             </div>
-
             <div class="item">
-              <div class="top">
-                <div class="name">Business systems</div>
-                <div class="meta">Systems + controls</div>
+              <div class="item-top">
+                <div class="item-name">Business systems</div>
+                <div class="item-meta">workflows</div>
               </div>
-              <div class="desc">MS Access, NetSuite, Alteryx, Power Automate</div>
-              <div class="pillrow">
-                <span class="pill">ms access</span>
-                <span class="pill">netsuite</span>
-                <span class="pill">alteryx</span>
-                <span class="pill">power automate</span>
-              </div>
+              <div class="item-desc">MS Access, NetSuite, Alteryx, Power Automate</div>
             </div>
-
             <div class="item">
-              <div class="top">
-                <div class="name">Credential</div>
-                <div class="meta">Professional</div>
+              <div class="item-top">
+                <div class="item-name">Credential</div>
+                <div class="item-meta">professional</div>
               </div>
-              <div class="desc">CPA (Utah)</div>
-              <div class="pillrow">
-                <span class="pill">cpa</span>
-              </div>
+              <div class="item-desc">CPA (Utah)</div>
             </div>
           </div>
         </div>
@@ -712,14 +655,80 @@
     <!-- CONTACT -->
     <section class="grid" id="contact">
       <article class="card">
-        <div class="card-head">
+        <div class="head">
           <div>
-            <h2 class="card-title">Contact</h2>
-            <p class="card-sub">Best ways to reach me</p>
+            <h2 class="title">Contact</h2>
+            <p class="subtitle">Best ways to reach me</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="body">
           <div class="list">
             <div class="item">
-              <div class="top">
-                <
+              <div class="item-top">
+                <div class="item-name">Email</div>
+                <div class="item-meta">preferred</div>
+              </div>
+              <div class="item-desc"><a class="mono" href="mailto:noah.myers@uvu.edu">noah.myers@uvu.edu</a></div>
+            </div>
+            <div class="item">
+              <div class="item-top">
+                <div class="item-name">Phone</div>
+                <div class="item-meta">office</div>
+              </div>
+              <div class="item-desc"><span class="mono">801-863-7273</span></div>
+            </div>
+            <div class="item">
+              <div class="item-top">
+                <div class="item-name">Location</div>
+                <div class="item-meta">Utah</div>
+              </div>
+              <div class="item-desc">Orem, Utah</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="head">
+          <div>
+            <h2 class="title">Links</h2>
+            <p class="subtitle">Optional quick access</p>
+          </div>
+        </div>
+        <div class="body">
+          <div class="list">
+            <div class="item">
+              <div class="item-top">
+                <div class="item-name">Personal site</div>
+                <div class="item-meta">external</div>
+              </div>
+              <div class="item-desc">
+                <a class="mono" href="https://www.noahmyers.com" target="_blank" rel="noopener">noahmyers.com</a>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item-top">
+                <div class="item-name">GitHub Pages note</div>
+                <div class="item-meta">single file</div>
+              </div>
+              <div class="item-desc">
+                This page is designed to live as <span class="mono">index.html</span> at the repo root with your two images.
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="foot">
+      <div>© <span id="y"></span> Noah Myers</div>
+      <div class="mono">Minimal • UVU-inspired palette • GitHub Pages</div>
+      <div><a href="#top">Back to top</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
