@@ -4,731 +4,147 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Noah Myers — Accounting professor | AIS, auditing, AI & analytics." />
-  <title>Noah Myers | Faculty Landing Page</title>
-
+  <title>Noah Myers | Landing Page</title>
   <style>
-    /* Muted UVU-inspired palette (green + slate). */
-    :root{
+    :root {
       --bg: #0b0f14;
-      --surface: rgba(255,255,255,.04);
-      --surface2: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.90);
-      --muted: rgba(255,255,255,.66);
-      --muted2: rgba(255,255,255,.52);
-
-      --uvu-green: #2a6a4f; /* muted green */
-      --uvu-green-2: #1f5a42;
-      --slate: #94a3b8;
-
-      --radius: 16px;
-      --shadow: 0 22px 60px rgba(0,0,0,.40);
-      --max: 1080px;
-
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --surface: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.68);
+      --accent: #2a6a4f;
+      --radius: 18px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --max: 760px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        "Apple Color Emoji", "Segoe UI Emoji";
     }
 
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg: #f6f7f9;
-        --surface: rgba(15,23,42,.04);
-        --surface2: rgba(15,23,42,.06);
-        --border: rgba(15,23,42,.10);
-        --text: rgba(15,23,42,.92);
-        --muted: rgba(15,23,42,.70);
-        --muted2: rgba(15,23,42,.56);
-        --shadow: 0 18px 45px rgba(2,6,23,.12);
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f5f6f8;
+        --surface: rgba(15, 23, 42, 0.04);
+        --border: rgba(15, 23, 42, 0.12);
+        --text: rgba(15, 23, 42, 0.92);
+        --muted: rgba(15, 23, 42, 0.62);
+        --shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
       }
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
       font-family: var(--sans);
       color: var(--text);
       background:
-        radial-gradient(900px 520px at 20% 10%, rgba(42,106,79,.22), transparent 60%),
-        radial-gradient(900px 520px at 85% 15%, rgba(148,163,184,.16), transparent 55%),
-        radial-gradient(900px 520px at 60% 95%, rgba(42,106,79,.10), transparent 55%),
+        radial-gradient(700px 420px at 20% 10%, rgba(42, 106, 79, 0.2), transparent 60%),
         var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 18px;
       line-height: 1.5;
-      letter-spacing: 0.1px;
-    }
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.92}
-
-    .wrap{max-width: var(--max); margin:0 auto; padding: 26px 18px 56px}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding: 6px 0 18px;
     }
 
-    .id{
-      display:flex; align-items:center; gap:12px;
-      min-width: 220px;
-    }
-    .mark{
-      width:11px; height:11px; border-radius:999px;
-      background: linear-gradient(135deg, var(--uvu-green), var(--slate));
-      box-shadow: 0 0 0 7px rgba(42,106,79,.12);
-    }
-    .name{font-weight:720; letter-spacing:-.2px}
-    .role{font-size:12px; color:var(--muted); font-weight:600; margin-top:2px}
-
-    .nav{
-      display:flex; gap:10px; flex-wrap:wrap;
-      font-size: 13px; color: var(--muted);
-      justify-content:flex-end;
-    }
-    .nav a{
-      padding: 7px 10px;
-      border: 1px solid transparent;
-      border-radius: 999px;
-    }
-    .nav a:hover{
-      border-color: var(--border);
+    .card {
+      width: 100%;
+      max-width: var(--max);
       background: var(--surface);
-    }
-
-    /* Minimal cards */
-    .card{
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, var(--surface2), rgba(255,255,255,0));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      overflow:hidden;
+      padding: 32px;
+      display: grid;
+      gap: 20px;
     }
 
-    /* HERO */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 14px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns: 1fr}
-    }
-    .hero-left{padding: 24px 22px}
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      font-size: 12px; color: var(--muted);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      padding: 7px 11px;
-      border-radius: 999px;
-    }
-    .badge .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: var(--uvu-green);
-      box-shadow: 0 0 0 5px rgba(42,106,79,.10);
-    }
-    h1{
-      margin: 12px 0 10px;
-      font-size: clamp(28px, 3.8vw, 40px);
-      line-height: 1.12;
-      letter-spacing: -0.6px;
-    }
-    .sub{
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 70ch;
-    }
-
-    .meta-row{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top: 12px;
-    }
-    .tag{
+    .eyebrow {
       font-size: 12px;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      padding: 6px 10px;
-      border-radius: 999px;
-    }
-
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 9px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-      font-weight: 650;
-      font-size: 13px;
-      cursor:pointer;
-      transition: transform .08s ease, background .10s ease;
-      user-select:none;
-    }
-    .btn:hover{background: rgba(255,255,255,.07)}
-    .btn:active{transform: translateY(1px)}
-    .btn.primary{
-      border-color: rgba(42,106,79,.55);
-      background: linear-gradient(135deg, rgba(42,106,79,.22), rgba(148,163,184,.10));
-    }
-
-    /* Photos */
-    .photos{
-      padding: 10px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .photo{
-      border-radius: 14px;
-      overflow:hidden;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      min-height: 180px;
-      position:relative;
-    }
-    .photo img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-      filter: saturate(1.0) contrast(1.02);
-    }
-    .photo::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.28));
-      pointer-events:none;
-    }
-
-    /* Sections */
-    section{margin-top: 14px}
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    @media (max-width: 900px){
-      .grid{grid-template-columns: 1fr}
-    }
-
-    .head{
-      padding: 16px 18px 0;
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-    }
-    .title{
-      margin:0;
-      font-size: 15px;
-      letter-spacing: -0.2px;
-      font-weight: 720;
-    }
-    .subtitle{
-      margin: 3px 0 0;
-      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
       color: var(--muted);
       font-weight: 600;
     }
-    .body{padding: 12px 18px 18px}
 
-    .list{display:flex; flex-direction:column; gap:10px}
-    .item{
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.03);
-      border-radius: 14px;
-      padding: 12px;
-    }
-    .item-top{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-    }
-    .item-name{font-weight:720}
-    .item-meta{font-size:12px; color: var(--muted2); font-family: var(--mono)}
-    .item-desc{margin-top:6px; color: var(--muted); font-size: 14px}
-
-    .divider{
-      height:1px; background: var(--border); margin: 12px 0;
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.5px;
     }
 
-    .foot{
-      margin-top: 16px;
-      display:flex; flex-wrap:wrap; gap:10px;
+    .sub {
+      margin: 0;
       color: var(--muted);
-      font-size: 12px;
-      justify-content:space-between;
-      padding: 8px 4px 0;
+      max-width: 60ch;
     }
-    .mono{font-family: var(--mono)}
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: inherit;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(42, 106, 79, 0.3), rgba(42, 106, 79, 0.12));
+      border-color: rgba(42, 106, 79, 0.6);
+    }
+
+    .details {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .details span {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(42, 106, 79, 0.15);
+    }
   </style>
 </head>
-
 <body>
-  <div class="wrap" id="top">
-    <header class="topbar">
-      <div class="id">
-        <span class="mark" aria-hidden="true"></span>
-        <div>
-          <div class="name">Noah Myers</div>
-          <div class="role">Assistant Professor of Accounting • AI & Data Analytics • AIS & Auditing</div>
-        </div>
-      </div>
-
-      <nav class="nav" aria-label="Site">
-        <a href="#about">About</a>
-        <a href="#publications">Publications</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#talks">Speaking</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <div class="hero">
-      <div class="card hero-left">
-        <div class="badge"><span class="dot" aria-hidden="true"></span>Utah Valley University • Woodbury School of Business</div>
-        <h1>Research and teaching at the intersection of auditing, information systems, and applied analytics.</h1>
-        <p class="sub">
-          My work examines how oversight, reporting choices, and technology shape information quality and decision-making.
-          In the classroom, I focus on practical, transparent workflows—especially where AI and analytics meet accounting practice.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="#contact">Contact</a>
-          <a class="btn" href="mailto:noah.myers@uvu.edu">Email</a>
-          <a class="btn" href="https://www.noahmyers.com" target="_blank" rel="noopener">Website</a>
-        </div>
-
-        <div class="meta-row" aria-label="Highlights">
-          <span class="tag">CPA (Utah)</span>
-          <span class="tag">Audit oversight & enforcement</span>
-          <span class="tag">Information credibility</span>
-          <span class="tag">AI & analytics pedagogy</span>
-        </div>
-      </div>
-
-      <div class="card" aria-label="Photos">
-        <div class="photos">
-          <div class="photo">
-            <img src="istockphoto-1082467846-612x612.jpg" alt="Photo" />
-          </div>
-          <div class="photo">
-            <img src="small-asian-family-portrait-at-home-photo.jpg" alt="Photo" />
-          </div>
-        </div>
-      </div>
+  <main class="card">
+    <div>
+      <div class="eyebrow">Utah Valley University · Woodbury School of Business</div>
+      <h1>Noah Myers</h1>
+      <p class="sub">
+        Assistant Professor of Accounting focused on auditing, information systems, and practical analytics.
+        This page is intentionally simple—just the essentials and how to connect.
+      </p>
     </div>
 
-    <!-- ABOUT + EDUCATION -->
-    <section class="grid">
-      <article class="card" id="about">
-        <div class="head">
-          <div>
-            <h2 class="title">About</h2>
-            <p class="subtitle">Academic focus and background</p>
-          </div>
-        </div>
-        <div class="body">
-          <p style="margin:0;color:var(--muted);font-size:14px;max-width:75ch;">
-            I’m an Assistant Professor of Accounting at Utah Valley University. My research spans auditing and
-            accounting information systems, with a focus on information acquisition, credibility, and the effects
-            of oversight and enforcement on firm behavior.
-          </p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:noah.myers@uvu.edu">Email</a>
+      <a class="btn" href="https://www.noahmyers.com" target="_blank" rel="noopener">Website</a>
+    </div>
 
-          <div class="divider"></div>
-
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Education</div>
-                <div class="item-meta">PhD • MAcc • BS</div>
-              </div>
-              <div class="item-desc">
-                Ph.D., Business Administration (Accounting), Arizona State University •
-                Master of Accountancy, Brigham Young University •
-                B.S., Accounting, Brigham Young University
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Professional background</div>
-                <div class="item-meta">advisory</div>
-              </div>
-              <div class="item-desc">
-                Prior experience in advisory/consulting roles at Ernst & Young and Squire & Company.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Research areas</h2>
-            <p class="subtitle">Themes across projects</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Audit oversight and enforcement</div>
-                <div class="item-meta">PCAOB</div>
-              </div>
-              <div class="item-desc">
-                How enforcement design and oversight affect auditors, firms, and real outcomes.
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Information acquisition and credibility</div>
-                <div class="item-meta">decision-making</div>
-              </div>
-              <div class="item-desc">
-                When people seek information, what they trust, and how systems and “shadow IT” alter perceived credibility.
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Applied analytics and AI in accounting</div>
-                <div class="item-meta">teaching</div>
-              </div>
-              <div class="item-desc">
-                Practical workflows that remain explainable, auditable, and aligned with controls.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section class="grid" id="publications">
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Selected publications</h2>
-            <p class="subtitle">Peer-reviewed (highlights)</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Is the PCAOB Enforcement Approach Aligned with Its Mandate?</div>
-                <div class="item-meta">Contemporary Accounting Research • 2025</div>
-              </div>
-              <div class="item-desc">
-                Evidence from sanctioned auditors and former enforcement staff on PCAOB enforcement approach.
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Do Auditor Change Announcements Trigger Information Acquisition?</div>
-                <div class="item-meta">Journal of Information Systems • 2025</div>
-              </div>
-              <div class="item-desc">
-                Examines information acquisition patterns surrounding auditor change announcements.
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Costs of Public Auditor Oversight: Real Earnings Management and Innovation Loss</div>
-                <div class="item-meta">AUDITING: A Journal of Practice & Theory • 2024</div>
-              </div>
-              <div class="item-desc">
-                Studies potential real effects of public oversight on firm decisions and innovation outcomes.
-              </div>
-            </div>
-
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">The Impact of Shadow IT Systems on Perceived Information Credibility</div>
-                <div class="item-meta">Accounting Horizons • 2017</div>
-              </div>
-              <div class="item-desc">
-                Links shadow systems to perceived credibility and managerial decisions.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Working papers</h2>
-            <p class="subtitle">In progress / under review</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Student Perception of New CPA Pathways and the Impact on Graduate Program Demand</div>
-                <div class="item-meta">working paper</div>
-              </div>
-              <div class="item-desc">
-                Investigates evolving CPA pathways and potential implications for graduate accounting education.
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">FTX Unchecked: The Internal Control Failures Behind the Crypto Giant’s Fall</div>
-                <div class="item-meta">teaching case</div>
-              </div>
-              <div class="item-desc">
-                A teaching-focused case on control failure, governance, and audit-relevant lessons.
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Auditor Changes and Information Risk</div>
-                <div class="item-meta">dissertation stream</div>
-              </div>
-              <div class="item-desc">
-                Research on information risk and behavior around auditor change events.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- TEACHING + SERVICE -->
-    <section class="grid" id="teaching">
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Teaching</h2>
-            <p class="subtitle">Courses and classroom focus</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">ACC 4510 — Artificial Intelligence & Data Analytics in Accounting</div>
-                <div class="item-meta">UVU</div>
-              </div>
-              <div class="item-desc">
-                Practical applications of AI and analytics for accounting workflows, emphasizing transparency and controls.
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">ACC 3510 — Accounting Information Systems</div>
-                <div class="item-meta">UVU</div>
-              </div>
-              <div class="item-desc">
-                Systems, processes, and internal control fundamentals—how information flows and where it breaks.
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">MGMT 2400 — Data Analytics for Business</div>
-                <div class="item-meta">UVU</div>
-              </div>
-              <div class="item-desc">
-                Analytics concepts and tools for business decision-making in a practical, approachable way.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Service & reviewing</h2>
-            <p class="subtitle">Selected items</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">University and department service</div>
-                <div class="item-meta">leadership</div>
-              </div>
-              <div class="item-desc">
-                Curriculum committee participation and academic program leadership activities.
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Editorial / peer review</div>
-                <div class="item-meta">scholarly</div>
-              </div>
-              <div class="item-desc">
-                Editorial board membership and ad hoc reviewing for academic journals.
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Student engagement</div>
-                <div class="item-meta">mentoring</div>
-              </div>
-              <div class="item-desc">
-                Supporting student organizations and professional development activities.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- SPEAKING + SKILLS -->
-    <section class="grid" id="talks">
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Speaking</h2>
-            <p class="subtitle">Selected engagements</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">ACFE Global Conference — Invited Speaker</div>
-                <div class="item-meta">June 2025 • Nashville, TN</div>
-              </div>
-              <div class="item-desc">Fraud, controls, and applied lessons for professional audiences.</div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Auburn Accounting & Auditing Summit — Speaker</div>
-                <div class="item-meta">Sept 2025 • Auburn, AL</div>
-              </div>
-              <div class="item-desc">Research insights and implications for audit and oversight.</div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">National Society of Accountants for Cooperatives — Speaker</div>
-                <div class="item-meta">May 2026 • Nashville, TN</div>
-              </div>
-              <div class="item-desc">Applied topics for practitioners and industry groups.</div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Skills</h2>
-            <p class="subtitle">Tools & platforms</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Data & methods</div>
-                <div class="item-meta">analysis</div>
-              </div>
-              <div class="item-desc">Python, SQL, SAS, Stata</div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Business systems</div>
-                <div class="item-meta">workflows</div>
-              </div>
-              <div class="item-desc">MS Access, NetSuite, Alteryx, Power Automate</div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Credential</div>
-                <div class="item-meta">professional</div>
-              </div>
-              <div class="item-desc">CPA (Utah)</div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="grid" id="contact">
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Contact</h2>
-            <p class="subtitle">Best ways to reach me</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Email</div>
-                <div class="item-meta">preferred</div>
-              </div>
-              <div class="item-desc"><a class="mono" href="mailto:noah.myers@uvu.edu">noah.myers@uvu.edu</a></div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Phone</div>
-                <div class="item-meta">office</div>
-              </div>
-              <div class="item-desc"><span class="mono">801-863-7273</span></div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Location</div>
-                <div class="item-meta">Utah</div>
-              </div>
-              <div class="item-desc">Orem, Utah</div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="head">
-          <div>
-            <h2 class="title">Links</h2>
-            <p class="subtitle">Optional quick access</p>
-          </div>
-        </div>
-        <div class="body">
-          <div class="list">
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">Personal site</div>
-                <div class="item-meta">external</div>
-              </div>
-              <div class="item-desc">
-                <a class="mono" href="https://www.noahmyers.com" target="_blank" rel="noopener">noahmyers.com</a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="item-top">
-                <div class="item-name">GitHub Pages note</div>
-                <div class="item-meta">single file</div>
-              </div>
-              <div class="item-desc">
-                This page is designed to live as <span class="mono">index.html</span> at the repo root with your two images.
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <footer class="foot">
-      <div>© <span id="y"></span> Noah Myers</div>
-      <div class="mono">Minimal • UVU-inspired palette • GitHub Pages</div>
-      <div><a href="#top">Back to top</a></div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+    <div class="details">
+      <span><span class="dot" aria-hidden="true"></span>Orem, Utah</span>
+      <span><span class="dot" aria-hidden="true"></span>Office: 801-863-7273</span>
+    </div>
+  </main>
 </body>
 </html>
